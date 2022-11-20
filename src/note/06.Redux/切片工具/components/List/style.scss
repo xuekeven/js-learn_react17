@@ -1,0 +1,46 @@
+#list {
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    font-size: 1rem;
+    height: 3em;
+    line-height: 3em;
+    border-bottom: solid #FFF5EE 2px;
+    display: flex;
+  }
+
+  .circle {
+    font-size: 1rem;
+    width: 2em;
+    height: 2em;
+    line-height: 2em;
+    border: solid gray 1px;
+    border-radius: 2em / 2em;
+    text-align: center;
+    margin: 0.5em;
+  }
+
+  .currect::before {
+    content: "\2714";
+    color: #008100;
+    text-align: center;
+  }
+
+  .listInput {
+    background-color: inherit;
+    font-size: 1rem;
+    width: calc(100% - 4em);
+    border: none;
+  }
+
+  .completed {
+    text-decoration: line-through;
+    color: grey;
+  }
+
+}

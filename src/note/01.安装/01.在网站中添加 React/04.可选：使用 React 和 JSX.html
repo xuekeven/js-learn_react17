@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>可选：使用 React 和 JSX</title>
+</head>
+<body>
+  <!-- 在之前的示例中只依赖了浏览器原生支持的特性。这就是为什么使用了 JS 函数调用
+      来告诉 React 要显示什么；然而，React 还提供了一种使用 JSX 编写界面的方式。 -->
+      <!-- 
+      const e = React.createElement;
+      return e(
+        'button',
+        { onClick: () => this.setState({ liked: true }) },
+        'Like'
+      ); 
+      -->
+      <!-- 
+      return (
+        <button onClick={() => this.setState({ liked: true })}>
+          Like
+        </button>
+      ); 
+      -->
+  <!-- 上面两段代码是等价的。虽然 JSX 完全是可选的，但是多数人觉得这样编写 UI 代码
+      更方便 —— 无论是使用 React 还是其它库。 -->
+
+  <!-- 快速尝试 JSX -->
+  <!-- 在项目中尝试 JSX 最快的方法是在页面中添加这个 <script> 标签： -->
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- 或者为： -->
+  <script src="../../babel.min.js"></script>
+  <!-- 现在，可以在任何 <script> 标签内使用 JSX，方法是在为其添加 type="text/babel" 属性。 -->
+  <!-- 这种方式适合于学习和创建简单的示例。然而，它会使网站变慢，并且不适用于生产环境。
+      当准备好更进一步时，删除添加的这个新的 <script> 标签以及 type="text/babel" 属性。
+      取而代之的，在下一小节中，设置一个 JSX 预处理器来自动转换所有 <script> 标签的内容。 -->
+  
+  <!-- 将 JSX 添加到项目 -->
+  <!-- 将 JSX 添加到项目中并不需要诸如打包工具或开发服务器那样复杂的工具。本质上，
+      添加 JSX 就像添加 CSS 预处理器一样。唯一的要求是你在计算机上安装了 Node.js。 -->
+  <!-- 在终端上跳转到你的项目文件夹，然后粘贴这两个命令： 
+      步骤 1： 执行 npm init -y 
+      步骤 2： 执行 npm install babel-cli@6 babel-preset-react-app@3 -->
+  <!-- 在这里使用 npm 只是用来安装 JSX 预处理器，之后不再需要它。
+      React 和应用程序代码都可以继续使用 <script> 标签而不做任何更改。 -->
+  </body>
+</html>

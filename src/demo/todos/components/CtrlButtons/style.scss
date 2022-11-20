@@ -1,0 +1,64 @@
+#ctrlButtons {
+
+  .allTypeButtons {
+    font-size: 1rem;
+    height: 2.5em;
+    border-bottom: solid #FFF5EE 2px;
+    position: relative;
+  }
+
+  .typeButtons {
+    position: absolute;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    min-width: 10em;
+
+    .typeButton {
+      font-size: .5rem;
+      height: 3em;
+      border-color: thistle;
+      background-color: inherit;
+      border-radius: 1em;
+    }
+
+    .toChoose {
+      border: none;
+    }
+  }
+
+  .tip-left {
+    font-size: .3rem;
+    position: absolute;
+    left: 5px;
+    top: 50%; 
+    transform: translate(0, -50%)
+  }
+
+  .tip-right {
+    font-size: .3rem;
+    position: absolute;
+    right: 5px;
+    top: 50%; 
+    transform: translate(0, -50%)
+  }
+
+  .allhistoryButtons {
+    font-size: 1rem;
+    height: 2.5em;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .historyButton {
+    font-size: .5rem;
+    height: 3em;
+    width: 15em;
+    border-color: thistle;
+    background-color: inherit;
+  }
+
+}

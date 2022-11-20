@@ -1,0 +1,61 @@
+
+.hidden {
+  visibility: hidden;
+}
+
+.disappear {
+  display: none;
+}
+
+#chooseTree {
+  display: block;
+  margin: 10px 0;
+
+  .div {
+    display: flex;
+  }
+
+  .button {
+    height: 15px;
+    width: 15px;
+  }
+
+  .fold::before {
+    margin-right: 5px;
+    content: "\25BC";
+  }
+
+  .unfold::before {
+    margin-right: 5px;
+    content: "\25BA";
+  }
+
+  .choose {
+    border: black solid 1px;
+    margin: 0 5px;
+    text-align: center;
+    line-height: 15px;
+    height: 15px;
+    width: 15px;
+    color: white;
+  }
+
+  .choosing, .chosen {
+    background-color: steelblue;
+  }
+
+  .choosing::before {
+    content: "\002D";
+    text-align: center;
+  }
+  
+  .chosen::before {
+    content: "\2713";
+    text-align: center;
+  }
+
+  ul {
+    margin: 5px 0 ;
+    padding-left: 20px ;
+  }
+}

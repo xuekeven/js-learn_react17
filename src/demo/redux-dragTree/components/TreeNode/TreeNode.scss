@@ -1,0 +1,33 @@
+#dragTree {
+  display: block;
+
+  .valueTop {
+    display: block;
+    height: 3px;
+    margin-left: 15px;
+    width: 100%;
+  }
+
+  .fold, .unfold {
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+  }
+
+  .fold::before {
+    content: "\25BC";
+  }
+
+  .unfold::before {
+    content: "\25BA";
+  }
+
+  .dragOver {
+    background-color: steelblue;
+  }
+
+  ul {
+    margin: 5px 0;
+    padding-left: 15px;
+  }
+}

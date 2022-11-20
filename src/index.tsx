@@ -1,19 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+import TicTacToe from './demo/TicTacToe';
+import ToDos from './demo/todos';
+import ReduxTree from './demo/redux-tree';
+import ReduxToDos from './demo/redux-todos/';
+import ReduxDragTree from './demo/redux-dragTree';
+
+const root = ReactDOM.createRoot((document.getElementById('root') as HTMLElement));
 root.render(
   <React.StrictMode>
-    <App />
+    <TicTacToe />
+    <ToDos />
+    <ReduxTree />
+    <ReduxToDos />
+    <ReduxDragTree />
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

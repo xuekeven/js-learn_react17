@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>一分钟用上 React</title>
+</head>
+<body>
+  <!-- ... 其它 HTML ... -->
+  <h2>Add React in One Minute</h2>
+  <p>This page demonstrates using React with no build tooling.</p>
+  <p>React is loaded as a script tag.</p>
+  <!-- ... 其它 HTML ... -->
+
+  <!-- 步骤 1： 添加一个 DOM 容器到 HTML -->
+  <!-- 首先，打开想要编辑的 HTML 页面。添加一个空的 <div> 标签作为标记想要用 React 显示内容的位置。
+      给这个 <div> 加上唯一的 id HTML 属性。这将允许稍后用 JS 代码找到它，并在其中显示一个 React 组件。 -->
+  <!-- 可以在 <body> 标签内的任意位置放置一个“容器” <div>。根据需要，可以在一个页面上放置多个
+      独立的 DOM 容器。它们通常是空标签 —— React 会替换 DOM 容器内的任何已有内容。 -->
+  <div id="like_button_container"></div>
+
+  <!-- 步骤 2：添加 Script 标签 -->
+  <!-- 向 HTML 页面中添加三个 <script> 标签：前两个标签加载 React，第三个加载组件代码。-->
+  <!-- 前两个标签（加载 React）： -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <!-- 注意: 部署时，将 "development.js" 替换为 "production.min.js"。-->
+  <!-- 前两个标签也可以为： -->
+  <script src="../../react.development.js"></script>
+  <script src="../../react-dom.development.js"></script>
+  <!-- 第三个标签（加载我们的 React 组件）： -->
+  <script src="./like_button.js"></script>
+
+  <!-- 步骤 3：创建一个 React 组件 -->
+  <!-- 在 like_button.js 文件中创建一个 React 组件。 -->
+
+  <!-- 提示：当重用一个组件 => 03.重用一个组件.html -->
+
+  <!-- 提示：为生产环境压缩 JavaScript 代码 -->
+  <!-- 在将网站部署到生产环境之前，要注意未经压缩的 JS 可能会显著降低用户的访问速度。如果已经压缩了应用
+      代码，如果确保已部署的 HTML 加载了以 production.min.js 结尾的 React 版本，那么网站是生产就绪的。 -->
+</body>
+</html>
