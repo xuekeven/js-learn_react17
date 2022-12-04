@@ -1,0 +1,21 @@
+.ant-tabs {
+  display: flex;
+  flex-direction: column;
+  .arco-tabs-header {
+    display: flex;
+    justify-content: space-between;
+    &-title {
+      padding: 5px;
+      cursor: pointer;
+      &-active {
+        background-color: #f2f3f5;
+        span {
+          color: blue;
+        };
+      }
+    }
+  }
+  .arco-tabs-content-inner {
+    margin: 0 !important;
+  }
+}
