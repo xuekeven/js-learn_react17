@@ -3,8 +3,8 @@ import { Tabs } from '@arco-design/web-react';
 import LifeCycle from './lifeCycle';
 import UseCallBack from './useCallBack';
 import UseMemo from './useMemo';
-// import ReduxToDos from './redux-todos/';
-// import ReduxDragTree from './redux-dragTree';
+import UseEffect from './useEffect';
+import UseImperativeHandle from './useImperativeHandle';
 
 const TabPane = Tabs.TabPane;
 
@@ -20,13 +20,12 @@ const Hook = () => {
       <TabPane key='3' title='useMemo'>
         <UseMemo />
       </TabPane>
-
-      {/* <TabPane key='4' title='ReduxToDos'>
-        <ReduxToDos />
+      <TabPane key='4' title='UseEffect'>
+        <UseEffect />
       </TabPane>
-      <TabPane key='5' title='ReduxDragTree'>
-        <ReduxDragTree />
-      </TabPane> */}
+      <TabPane key='5' title='UseImperativeHandle'>
+        <UseImperativeHandle />
+      </TabPane>
     </Tabs>
   </>
 }
