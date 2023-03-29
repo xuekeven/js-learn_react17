@@ -36,5 +36,4 @@ function Son (props: any, ref: any) {
   return <button>Son</button>;
 }
 
-
 export default Father;
