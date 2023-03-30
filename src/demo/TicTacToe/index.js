@@ -53,7 +53,7 @@ class Square extends React.Component {
   render() {
     return (
       <button
-        class="square" 
+        className="square" 
         onClick={() => this.props.on1Click()}
       >
         {this.props.value}
@@ -65,7 +65,7 @@ class Square extends React.Component {
 // 用函数组件来写 Square 组件：把两个 this.props 都替换成了 props。
 // function Square(props) {
 //   return (
-//     <button class='square' onClick={props.onClick}>
+//     <button className='square' onClick={props.onClick}>
 //       {props.value}
 //     </button>
 //   )
@@ -129,18 +129,18 @@ class Board extends React.Component {
 
     return (
       <div>
-        {/* <div class="status">{status}</div> */}
-        <div class="board-row">
+        {/* <div className="status">{status}</div> */}
+        <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
           {this.renderSquare(2)}
         </div>
-        <div class="board-row">
+        <div className="board-row">
           {this.renderSquare(3)}
           {this.renderSquare(4)}
           {this.renderSquare(5)}
         </div>
-        <div class="board-row">
+        <div className="board-row">
           {this.renderSquare(6)}
           {this.renderSquare(7)}
           {this.renderSquare(8)}
@@ -202,14 +202,14 @@ class Game extends React.Component {
     else status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
 
     return (
-      <div class="game">
-        <div class="game-board">
+      <div className="game">
+        <div className="game-board">
           <Board
             squares={current.squares}
             on2Click={(i) => this.handleClick(i)}
           />
         </div>
-        <div class="game-info">
+        <div className="game-info">
           <div>{status}</div>
           <ol>{moves}</ol>
         </div>

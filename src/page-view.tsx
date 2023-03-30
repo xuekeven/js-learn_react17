@@ -8,7 +8,7 @@ import Hook from './hook';
 interface Menu {
   title: string,
   content: React.ReactElement,
-  exClas?: string
+  key: number
 }
 
 export default function PageView() {
@@ -19,11 +19,13 @@ export default function PageView() {
     setMenuList([
       {
         title: 'Demo',
-        content: <Demo />
+        content: <Demo />,
+        key: 1
       },
       {
         title: 'Hook',
-        content: <Hook />
+        content: <Hook />,
+        key: 2
       }
     ])
   }, [])
@@ -34,11 +36,11 @@ export default function PageView() {
         <div className='menu-top'>主目录</div>
         {
           menuList.map((ele, ind) => {
-            return <>
-              <div className={`menu-item ${ele.exClas}`} onClick={() => setNowMenu(ind)}>
-                <Button block>{ele.title}</Button>
+            return <div key={ele.key}>
+              <div key={ele.key} className={`menu-item`} onClick={() => setNowMenu(ind)}>
+                <Button type={nowMenu === ind ? 'primary' : 'default'} block>{ele.title}</Button>
               </div>
-            </>
+            </div>
           })
         }
       </div>
