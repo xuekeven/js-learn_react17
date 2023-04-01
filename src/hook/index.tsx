@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Tabs } from 'antd';
 import { TabPane } from '../interface';
+import './index.scss';
 
 import LifeCycle from './lifeCycle';
 import UseCallBack from './useCallBack';
@@ -37,13 +38,13 @@ const Hook = () => {
     },
   ]);
 
-  return <>
+  return <div className='page-hook'>
     <Tabs
       defaultActiveKey="1"
       type="card"
       items={items}
     />
-  </>
+  </div>
 }
 
 export default Hook;

@@ -37,7 +37,7 @@ export default function PageView() {
         {
           menuList.map((ele, ind) => {
             return <div key={ele.key}>
-              <div key={ele.key} className={`menu-item`} onClick={() => setNowMenu(ind)}>
+              <div className={`menu-item`} onClick={() => setNowMenu(ind)}>
                 <Button type={nowMenu === ind ? 'primary' : 'default'} block>{ele.title}</Button>
               </div>
             </div>

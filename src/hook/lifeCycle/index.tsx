@@ -1,4 +1,6 @@
 import React from 'react';
+import { Button } from 'antd';
+
 import FirstRenderOld from './first-render-old';
 import FirstRenderNew from './first-render-new';
 import ChangeRenderOld from './change-render-old';
@@ -17,8 +19,6 @@ class App extends React.Component<any, any>{
   }
 
   render() {
-    const { render } = this.state;
-
     const ChildMap: any = {
       FirstRenderOld: <FirstRenderOld />,
       FirstRenderNew: <FirstRenderNew />,
@@ -26,17 +26,16 @@ class App extends React.Component<any, any>{
       ChangeRenderNew: <ChangeRenderNew />
     }
 
-    const Button = <div style={{ marginBottom: 30 }}>
-      <div><button onClick={() => this.changeRender('FirstRenderOld')}>首次渲染---旧生命周期</button></div>
-      <div><button onClick={() => this.changeRender('FirstRenderNew')}>首次渲染---新生命周期</button></div>
-      <div><button onClick={() => this.changeRender('ChangeRenderOld')}>组件改变---旧生命周期</button></div>
-      <div><button onClick={() => this.changeRender('ChangeRenderNew')}>组件改变---新生命周期</button></div>
-    </div>
-
-    const Child = ChildMap[render];
-
-    return <div style={{ marginTop: 20 }}>
-      {Button}{Child}
+    return <div style={{ marginRight: 20, display: 'flex' }}>
+      <div style={{ margin: '0 15px 10px 5px' }}>
+        <div><Button onClick={() => this.changeRender('FirstRenderOld')}>首次渲染---旧生命周期</Button></div>
+        <div><Button onClick={() => this.changeRender('FirstRenderNew')}>首次渲染---新生命周期</Button></div>
+        <div><Button onClick={() => this.changeRender('ChangeRenderOld')}>组件改变---旧生命周期</Button></div>
+        <div><Button onClick={() => this.changeRender('ChangeRenderNew')}>组件改变---新生命周期</Button></div>
+      </div>
+      <div>
+        {ChildMap[this.state.render]}
+      </div>
     </div>
   }
 }
