@@ -34,13 +34,16 @@ class App extends React.Component<any, any> {
     this.wordsAry.push('----------');
 
     return (
-      <div>
-        <Button onClick={() => this.setState((times: number) => ({ times: times + 1 }))}>改变父组件</Button>
-        <Button onClick={() => console.log('手动打印---', this.wordsAry)}>打印wordsAry（不重渲染）</Button>
-
-        <Child key={1} order={1} addConsole={this.addConsole} />
-        <Child key={2} order={2} addConsole={this.addConsole} />
-        { this.wordsAry.map((ele: string) => <div>{ele}</div>) }
+      <div className='life-cycle'>
+        <div>
+          <Button onClick={() => this.setState((times: number) => ({ times: times + 1 }))}>改变父组件</Button>
+          <Button onClick={() => console.log('手动打印---', this.wordsAry)}>打印wordsAry（不重渲染）</Button>
+          <Child key={1} order={1} addConsole={this.addConsole} />
+          <Child key={2} order={2} addConsole={this.addConsole} />
+        </div>
+        <div>
+          { this.wordsAry.map((ele: string, ind: number) => <div>{ind}---{ele}</div>) }
+        </div>
       </div>
     )
   }

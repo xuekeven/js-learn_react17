@@ -40,6 +40,7 @@ const Hook = () => {
 
   return <div className='page-hook'>
     <Tabs
+      destroyInactiveTabPane
       defaultActiveKey="1"
       type="card"
       items={items}

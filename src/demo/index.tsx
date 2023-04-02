@@ -45,6 +45,7 @@ const Demo = () => {
 
   return <>
     <Tabs
+      destroyInactiveTabPane
       defaultActiveKey="1"
       type="card"
       items={items}

@@ -1,46 +1,58 @@
 import React from 'react';
+import { Button } from 'antd';
+
+let wordsAry:string[] = [];
 
 class App extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
-    console.log('---组件改变---新生命周期---');
-    console.log('App constructor');
+    wordsAry = [
+      '---组件改变---新生命周期---', 
+      'App constructor'
+    ]
     this.state = {
-      count: 0,
+      times: 0,
     }
   }
 
   static getDerivedStateFromProps() {
-    console.log('App static getDerivedStateFromProps');
+    wordsAry.push('App static getDerivedStateFromProps');
     return null;
   }
 
   componentDidMount() {
-    console.log('App componentDidMount');
+    wordsAry.push('App componentDidMount');
   }
 
   shouldComponentUpdate(nextProps: any) {
-    console.log('App shouldComponentUpdate');
+    wordsAry.push('App shouldComponentUpdate');
     return true;
   }
 
   getSnapshotBeforeUpdate(prevProps: any) {
-    console.log('App getSnapshotBeforeUpdate');
+    wordsAry.push('App getSnapshotBeforeUpdate');
     return null;
   }
 
   componentDidUpdate() {
-    console.log('App componentDidUpdate');
+    wordsAry.push('App componentDidUpdate');
   }
 
   render() {
-    console.log('App render');
+    wordsAry.push('App render');
+    wordsAry.push('----------');
+
     return (
-      <div>
-        ---组件改变---新生命周期---
-        <div><button onClick={() => this.setState((count: any) => ({ count: count + 1 }))}>点击改变父组件App</button></div>
-        <div><Child order={1} /></div>
-        <div><Child order={2} /></div>
+      <div className='life-cycle'>
+        <div>
+          <Button onClick={() => this.setState((times: number) => ({ times: times + 1 }))}>改变父组件</Button>
+          <Button onClick={() => console.log('手动打印---', wordsAry)}>打印wordsAry（不重渲染）</Button>
+          <Child key={1} order={1} />
+          <Child key={2} order={2} />
+        </div>
+        <div>
+          { wordsAry.map((ele: string, ind: number) => <div>{ind}---{ele}</div>) }
+        </div>
       </div>
     )
   }
@@ -50,41 +62,42 @@ class Child extends React.Component<any, any> {
 
   constructor(props: any) {
     super(props);
-    console.log(`Child${this.props.order} constructor`);
+    wordsAry.push(`Child${this.props.order} constructor`);
     this.state = {
-      count: 0,
+      times: 0,
     };
   }
 
   static getDerivedStateFromProps(props: any) {
-    console.log(`Child${props.order} static getDerivedStateFromProps`);
+    wordsAry.push(`Child${props.order} static getDerivedStateFromProps`);
     return null;
   }
 
   componentDidMount() {
-    console.log(`Child${this.props.order} componentDidMount`);
+    wordsAry.push(`Child${this.props.order} componentDidMount`);
   }
 
   shouldComponentUpdate(nextProps: any) {
-    console.log(`Child${nextProps.order} shouldComponentUpdate`);
+    wordsAry.push(`Child${nextProps.order} shouldComponentUpdate`);
     return true;
   }
 
   getSnapshotBeforeUpdate(prevProps: any) {
-    console.log(`Child${prevProps.order} getSnapshotBeforeUpdate`);
+    wordsAry.push(`Child${prevProps.order} getSnapshotBeforeUpdate`);
     return null;
   }
 
   componentDidUpdate() {
-    console.log(`Child${this.props.order} componentDidUpdate`);
+    wordsAry.push(`Child${this.props.order} componentDidUpdate`);
   }
 
   render() {
-    console.log(`Child${this.props.order} render`);
+    wordsAry.push(`Child${this.props.order} render`);
+
     return (
-      <button onClick={() => this.setState((count: any) => ({ count: count + 1 }))}>
-        点击改变子组件Child{this.props.order}
-      </button>
+      <Button onClick={() => this.setState((times: number) => ({ times: times + 1 }))}>
+        改变子组件Child{this.props.order}
+      </Button>
     )
   }
 }

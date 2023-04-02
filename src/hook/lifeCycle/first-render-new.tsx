@@ -1,28 +1,44 @@
 import React from 'react';
+import { Button } from 'antd';
+
+let wordsAry:string[] = [];
 
 class App extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
-    console.log('---首次渲染---新生命周期---');
-    console.log('App constructor');
+    wordsAry = [
+      '---首次渲染---新生命周期---', 
+      'App constructor'
+    ]
+    this.state = {
+      times: 0,
+    }
   }
 
   static getDerivedStateFromProps() {
-    console.log('App static getDerivedStateFromProps');
+    wordsAry.push('App static getDerivedStateFromProps');
     return null;
   }
 
   componentDidMount() {
-    console.log('App componentDidMount');
+    wordsAry.push('App componentDidMount');
   }
 
   render() {
-    console.log('App render');
+    wordsAry.push('App render');
+    wordsAry.push('----------');
+
     return (
-      <div>
-        ---首次渲染---新生命周期---
-        <Child order={1} />
-        <Child order={2} />
+      <div className='life-cycle'>
+        <div>
+          <Button onClick={() => this.setState((times: number) => ({ times: times + 1 }))}>改变父组件</Button>
+          <Button onClick={() => console.log('手动打印---', wordsAry)}>打印wordsAry（不重渲染）</Button>
+          <Child key={1} order={1} />
+          <Child key={2} order={2} />
+        </div>
+        <div>
+          { wordsAry.map((ele: string, ind: number) => <div>{ind}---{ele}</div>) }
+        </div>
       </div>
     )
   }
@@ -31,25 +47,21 @@ class App extends React.Component<any, any> {
 class Child extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
-    console.log(`Child${this.props.order} constructor`);
+    wordsAry.push(`Child${this.props.order} constructor`);
   }
 
   static getDerivedStateFromProps(props: any) {
-    console.log(`Child${props.order} static getDerivedStateFromProps`);
+    wordsAry.push(`Child${props.order} static getDerivedStateFromProps`);
     return null;
   }
 
   componentDidMount() {
-    console.log(`Child${this.props.order} componentDidMount`);
+    wordsAry.push(`Child${this.props.order} componentDidMount`);
   }
 
   render() {
-    console.log(`Child${this.props.order} render`);
-    return (
-      <div>
-        Child{this.props.order}
-      </div>
-    )
+    wordsAry.push(`Child${this.props.order} render`);
+    return null
   }
 }
 

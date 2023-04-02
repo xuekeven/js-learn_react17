@@ -43,6 +43,7 @@ class App extends React.Component<any, any> {
   addConsole = (str: string) => {
     this.wordsAry.push(str);
   }
+
   addtimes = (str: string) => {
     this.setState((times: number) => ({ times: times + 1 }))
   }
@@ -52,13 +53,16 @@ class App extends React.Component<any, any> {
     this.wordsAry.push('----------');
 
     return (
-      <div>
-        <Button onClick={() => this.setState((times: number) => ({ times: times + 1 }))}>改变父组件</Button>
-        <Button onClick={() => console.log('手动打印---', this.wordsAry)}>打印wordsAry（不重渲染）</Button>
-
-        <Child key={1} order={1} addConsole={this.addConsole} addtimes={this.addtimes} />
-        <Child key={2} order={2} addConsole={this.addConsole} addtimes={this.addtimes} />
-        { this.wordsAry.map((ele: string) => <div>{ele}</div>) }
+      <div className='life-cycle'>
+        <div>
+          <Button onClick={() => this.setState((times: number) => ({ times: times + 1 }))}>改变父组件</Button>
+          <Button onClick={() => console.log('手动打印---', this.wordsAry)}>打印wordsAry（不重渲染）</Button>
+          <Child key={1} order={1} addConsole={this.addConsole} />
+          <Child key={2} order={2} addConsole={this.addConsole} />
+        </div>
+        <div>
+          { this.wordsAry.map((ele: string, ind: number) => <div>{ind}---{ele}</div>) }
+        </div>
       </div>
     )
   }
@@ -100,6 +104,7 @@ class Child extends React.Component<any, any> {
 
   render() {
     this.props.addConsole(`Child${this.props.order} render`);
+
     return (
       <Button onClick={() => this.setState((times: number) => ({ times: times + 1 }))}>
         改变Child{this.props.order}

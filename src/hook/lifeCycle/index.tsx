@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'antd';
+import './index.scss';
 
 import FirstRenderOld from './first-render-old';
 import FirstRenderNew from './first-render-new';
@@ -33,7 +34,7 @@ class App extends React.Component<any, any>{
         <div><Button onClick={() => this.changeRender('ChangeRenderOld')}>组件改变---旧生命周期</Button></div>
         <div><Button onClick={() => this.changeRender('ChangeRenderNew')}>组件改变---新生命周期</Button></div>
       </div>
-      <div>
+      <div className='life-cycle-wrapper'>
         {ChildMap[this.state.render]}
       </div>
     </div>

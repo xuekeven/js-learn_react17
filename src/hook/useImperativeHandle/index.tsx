@@ -1,16 +1,16 @@
 import { useImperativeHandle, forwardRef, useRef } from "react";
 
 function Father () {
-  const inputRef = useRef(null);
+  const sonRef = useRef(null);
 
   const onClick = () => {
-    (inputRef as any).current.focus()
-    console.log('inputRef---', inputRef)
+    (sonRef as any).current.focus()
+    console.log('sonRef---', sonRef)
   }
 
   return <>
     <button onClick={onClick}>Father</button>
-    <SonWrapper ref={inputRef} />
+    <SonWrapper ref={sonRef} />
   </> 
 }
 
@@ -30,6 +30,7 @@ function Son (props: any, ref: any) {
     focus: () => {
       console.log('useImperativeHandle---focus')
     }, 
+    mouseIn,
     mouseOut
   }));
 
