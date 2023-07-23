@@ -23,42 +23,44 @@ class App extends React.Component<any, any> {
     this.wordsAry.push('App componentDidMount');
   }
 
-  UNSAFE_componentWillReceiveProps() {
+  UNSAFE_componentWillReceiveProps(nextProps: any, nextState: any) {
     this.wordsAry.push('App componentWillReceiveProps');
+    console.log('App componentWillReceiveProps', this.props, nextProps, this.state, nextState);
   }
 
-  shouldComponentUpdate(nextProps: any) {
+  shouldComponentUpdate(nextProps: any, nextState: any) {
     this.wordsAry.push('App shouldComponentUpdate');
+    console.log('App shouldComponentUpdate', this.props, nextProps, this.state, nextState);
+    if (nextState.times === 2) return false
     return true;
   }
 
-  UNSAFE_componentWillUpdate() {
+  UNSAFE_componentWillUpdate(nextProps: any, nextState: any) {
     this.wordsAry.push('App componentWillUpdate');
+    console.log('App componentWillUpdate', this.props, nextProps, this.state, nextState);
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps: any, prevState: any, snapshot: any) {
     this.wordsAry.push('App componentDidUpdate');
+    console.log('App componentDidUpdate', this.props, prevProps, this.state, prevState, snapshot);
   }
 
   addConsole = (str: string) => {
     this.wordsAry.push(str);
   }
 
-  addtimes = (str: string) => {
-    this.setState((times: number) => ({ times: times + 1 }))
-  }
-
   render() {
     this.wordsAry.push('App render');
     this.wordsAry.push('----------');
+    console.log('App render', this.props, this.state);
 
     return (
       <div className='life-cycle'>
         <div>
-          <Button onClick={() => this.setState((times: number) => ({ times: times + 1 }))}>改变父组件</Button>
+          <Button onClick={() => this.setState((s: any) => ({ times: s.times + 1 }))}>改变父组件</Button>
           <Button onClick={() => console.log('手动打印---', this.wordsAry)}>打印wordsAry（不重渲染）</Button>
-          <Child key={1} order={1} addConsole={this.addConsole} />
-          <Child key={2} order={2} addConsole={this.addConsole} />
+          <Child key={1} order={1} appTimes={this.state.times} addConsole={this.addConsole} />
+          <Child key={2} order={2} appTimes={this.state.times} addConsole={this.addConsole} />
         </div>
         <div>
           { this.wordsAry.map((ele: string, ind: number) => <div>{ind}---{ele}</div>) }
@@ -85,28 +87,34 @@ class Child extends React.Component<any, any> {
     this.props.addConsole(`Child${this.props.order} componentDidMount`);
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps: any) {
+  UNSAFE_componentWillReceiveProps(nextProps: any, nextState: any) {
     this.props.addConsole(`Child${nextProps.order} componentWillReceiveProps`);
+    console.log(`Child${nextProps.order} componentWillReceiveProps`, this.props, nextProps, this.state, nextState);
   }
 
-  shouldComponentUpdate(nextProps: any) {
+  shouldComponentUpdate(nextProps: any, nextState: any) {
     this.props.addConsole(`Child${nextProps.order} shouldComponentUpdate`);
+    console.log(`Child${nextProps.order} shouldComponentUpdate`, this.props, nextProps, this.state, nextState);
+    if (nextState.times === 2) return false
     return true;
   }
 
-  UNSAFE_componentWillUpdate() {
+  UNSAFE_componentWillUpdate(nextProps: any, nextState: any) {
     this.props.addConsole(`Child${this.props.order} componentWillUpdate`);
+    console.log(`Child${this.props.order} componentWillUpdate`, this.props, nextProps, this.state, nextState);
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps: any, prevState: any, snapshot: any) {
     this.props.addConsole(`Child${this.props.order} componentDidUpdate`);
+    console.log(`Child${this.props.order} componentDidUpdate`, this.props, prevProps, this.state, prevState, snapshot);
   }
 
   render() {
     this.props.addConsole(`Child${this.props.order} render`);
+    console.log(`Child${this.props.order} render`, this.props, this.state);
 
     return (
-      <Button onClick={() => this.setState((times: number) => ({ times: times + 1 }))}>
+      <Button onClick={() => this.setState((s: any) => ({ times: s.times + 1 }))}>
         改变Child{this.props.order}
       </Button>
     )
